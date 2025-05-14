@@ -19,7 +19,9 @@ public interface IBoardService {
     int updateBoard(Board board);
 
     // 게시글 삭제
-    int deleteBoard(Board board);
+    int deleteBoard(int boardNo);
     
     int getBoardCount(Page page);
+
+	
 }

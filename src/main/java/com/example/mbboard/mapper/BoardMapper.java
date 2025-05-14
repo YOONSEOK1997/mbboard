@@ -17,7 +17,7 @@ public interface BoardMapper {
     // 게시글 수정
     int updateBoard(Board board);
     //게시글 삭제
-    int deleteBoardByKey(Board board);
+    int deleteBoardByKey(int boardNo);
     
     int getBoardCount(Page page);
 }

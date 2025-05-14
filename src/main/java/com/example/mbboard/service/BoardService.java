@@ -38,8 +38,8 @@ public class BoardService implements IBoardService {
     }
 
     @Override
-    public int deleteBoard(Board board) {
-        return boardMapper.deleteBoardByKey(board);
+    public int deleteBoard(int boardNo) {
+        return boardMapper.deleteBoardByKey(boardNo);
     }
     @Override
     public int getBoardCount(Page page) {
