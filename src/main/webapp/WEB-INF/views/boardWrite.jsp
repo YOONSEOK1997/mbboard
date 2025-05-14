@@ -5,6 +5,7 @@
     <title>게시글 작성</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <style>
         body {
             font-family: 'Segoe UI', sans-serif;
@@ -70,6 +71,7 @@
             background-color: #218838;
         }
     </style>
+    
 </head>
 <body>
 
@@ -87,10 +89,29 @@
         <input type="text" id="boardUser" name="boardUser" value="unnamed" required>
 
         <div class="button-group">
-            <button type="submit">등록</button>
+            <button type="submit" onclick="checker()">등록</button>
         </div>
     </form>
 </div>
-
+<script>
+	function checker() {
+		var boardTitle = document.getElementById('boardTitle');
+		var boardContent = document.getElementById('boardContent');
+		var boardUser = document.getElementById('boardUser');
+		
+		if(!boardTitle.value){
+			alert("제목을 입력하세요");
+			boardTitle.focus();
+			return false;
+		}
+		if(!boardContent.value){
+			alert("내용을 입력하세요");
+			boardContent.focus();
+			return false;
+		}
+	
+		
+	}
+</script>
 </body>
 </html>
