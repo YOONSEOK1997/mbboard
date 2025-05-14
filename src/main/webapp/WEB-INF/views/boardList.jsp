@@ -154,26 +154,27 @@
         </tbody>
     </table>
 
-    <div class="pagination">
-        <c:if test="${page.currentPage > 1}">
-            <a href="?currentPage=${page.currentPage - 1}">&laquo; 이전</a>
-        </c:if>
+   <div class="pagination">
+    <c:if test="${page.currentPage > 10}">
+        <a href="?currentPage=${page.currentPage - 10}&searchWord=${param.searchWord}">&laquo; 이전</a>
+    </c:if>
 
-        <c:forEach var="i" begin="1" end="${page.lastPage}">
-            <c:choose>
-                <c:when test="${i == page.currentPage}">
-                    <strong>[${i}]</strong>
-                </c:when>
-                <c:otherwise>
-                    <a href="?currentPage=${i}">${i}</a>
-                </c:otherwise>
-            </c:choose>
-        </c:forEach>
+    <c:forEach var="i" begin="1" end="${page.lastPage}">
+        <c:choose>
+            <c:when test="${i == page.currentPage}">
+                <strong>[${i}]</strong>
+            </c:when>
+            <c:otherwise>
+                <a href="?currentPage=${i}&searchWord=${param.searchWord}">${i}</a>
+            </c:otherwise>
+        </c:choose>
+    </c:forEach>
 
-        <c:if test="${page.currentPage < page.lastPage}">
-            <a href="?currentPage=${page.currentPage + 1}">다음 &raquo;</a>
-        </c:if>
-    </div>
+    <c:if test="${page.currentPage < page.lastPage - 10}">
+        <a href="?currentPage=${page.currentPage + 10}&searchWord=${param.searchWord}">다음 &raquo;</a>
+    </c:if>
+</div>
+
 
     <div class="clearfix">
         <a href="/boardWrite" class="write-btn">✏️ 작성하기</a>
