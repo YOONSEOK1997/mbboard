@@ -55,9 +55,10 @@
     FROM board
     WHERE board_no = #{boardNo}
     </delete>
+    <!-- 페이징처리 -->
     <select id="getBoardCount" resultType="int">
    SELECT COUNT(*) FROM board
-WHERE board_title LIKE CONCAT('%', #{searchWord}, '%')
-</select>
-    <!-- totalPageCount -->
+	WHERE board_title LIKE CONCAT('%', #{searchWord}, '%')
+	</select>
+    
 </mapper>

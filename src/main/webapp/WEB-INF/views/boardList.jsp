@@ -165,13 +165,13 @@
                 <strong>[${i}]</strong>
             </c:when>
             <c:otherwise>
-                <a href="?currentPage=${i}&searchWord=${param.searchWord}">${i}</a>
+                <a href="?currentPage=${i}&searchWord=${page.searchWord}">${i}</a>
             </c:otherwise>
         </c:choose>
     </c:forEach>
 
     <c:if test="${page.currentPage < page.lastPage - 10}">
-        <a href="?currentPage=${page.currentPage + 10}&searchWord=${param.searchWord}">다음 &raquo;</a>
+        <a href="?currentPage=${page.currentPage + 10}&searchWord=${page.searchWord}">다음 &raquo;</a>
     </c:if>
 </div>
 
