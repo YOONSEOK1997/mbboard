@@ -90,16 +90,12 @@ public class LoginController {
 			return "/member/info"; 
 		}
 
-		
 		Member member = loginService.findById(loginMember.getMemberId());
-
-		
 
 		// 비밀번호 변경
 		member.setMemberPw(newPw);
 		loginService.updatePassword(member);
 
-		
 		session.setAttribute("loginMember", member);
 
 		model.addAttribute("msg", "비밀번호가 성공적으로 변경되었습니다.");

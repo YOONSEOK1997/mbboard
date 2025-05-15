@@ -25,8 +25,8 @@
                 </td>
                 <td>
                    <select class="memberRole">
-    <option value="ADMIN" ${member.memberRole eq 'admin' ? 'selected' : ''}>admin</option>
-    <option value="MEMBER" ${member.memberRole eq 'user' ? 'selected' : ''}>user</option>
+    <option value="admin" ${member.memberRole eq 'admin' ? 'selected' : ''}>admin</option>
+    <option value="user" ${member.memberRole eq 'user' ? 'selected' : ''}>user</option>
 </select>
 
                 </td>

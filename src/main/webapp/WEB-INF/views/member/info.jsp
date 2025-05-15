@@ -39,7 +39,7 @@
 
     <hr>
 
-   
+   <a href="/login">홈으로 이동</a>
 
     <script>
       document.getElementById('passwordForm').addEventListener('submit', function(e) {
