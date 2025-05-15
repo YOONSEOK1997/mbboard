@@ -2,7 +2,7 @@ package com.example.mbboard.controller;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,7 +18,7 @@ public class BoardController {
 
     private IBoardService boardService;
 
-    @Autowired
+  
     public BoardController(IBoardService boardService) {
         this.boardService = boardService;
     }
@@ -26,14 +26,13 @@ public class BoardController {
    // 게시글 목록
     @GetMapping({"/", "/boardList"})
     public String boardList(@ModelAttribute Page page, Model model) {
-        // 총 게시글 수 구해서 Page에 설정
+      
         int totalCount = boardService.getBoardCount(page);
         page.setTotalCount(totalCount);
 
-        // 목록 가져오기
         List<Board> boardList = boardService.getBoardListByPage(page);
 
-        // 모델에 데이터 담기
+   
         model.addAttribute("boardList", boardList);
         model.addAttribute("page", page);
 
@@ -85,12 +84,12 @@ public class BoardController {
     public ResponseEntity<Void> boardDelete(@RequestParam int boardNo) {
         Board board = new Board();
         board.setBoardNo(boardNo);
-        int result = boardService.deleteBoard(board);
+        int result = boardService.deleteBoard(boardNo);
 
         if (result > 0) {
-            return ResponseEntity.ok().build(); // 성공(200)
+            return ResponseEntity.ok().build(); 
         } else {
-            return ResponseEntity.status(500).build(); // 실패(500)
+            return ResponseEntity.status(500).build(); 
         }
     }
 
