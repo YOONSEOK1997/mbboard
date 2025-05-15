@@ -50,8 +50,8 @@ public class LoginService implements ILoginService {
     public List<Member> getMemberList(Member member){
     	return loginMapper.selectMembers(member);
     }
-   
-@Override
+    //역할 변경
+    @Override
         public int updateMemberRole(Member member) {
             return loginMapper.updateMemberRole(member);
         }

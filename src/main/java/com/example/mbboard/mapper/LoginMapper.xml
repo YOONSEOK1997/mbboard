@@ -12,7 +12,8 @@
 		FROM member
 		WHERE
 		member_id = #{memberId}
-		AND member_pw = #{memberPw}
+		AND
+		member_pw = #{memberPw}
 	</select>
 
 	<!-- 회원가입 -->
@@ -27,7 +28,9 @@
 	<!-- 아이디 중복체크 -->
 	<select id="findById" parameterType="String"
 		resultType="com.example.mbboard.dto.Member">
-		SELECT member_id AS memberId
+		SELECT member_id AS memberId,
+		member_pw AS memberPw,
+		member_role AS memberRole
 		FROM member
 		WHERE member_id = #{memberId}
 	</select>
@@ -37,22 +40,25 @@
 		parameterType="com.example.mbboard.dto.Member">
 		UPDATE member
 		SET member_pw = #{memberPw}
-		WHERE member_id = #{memberId}
+		WHERE member_id
+		= #{memberId}
 	</update>
 	<select id="selectMembers"
 		resultType="com.example.mbboard.dto.Member">
 		<!-- 멤버리스트 출력 -->
-		SELECT member_id   AS memberID,
-			   member_role AS memberRole
+		SELECT member_id AS memberID,
+		member_role AS memberRole
 		FROM member
 		order by member_id desc;
 	</select>
 
 	<!-- 비밀번호 변경 -->
-	<update id="updateMemberRole" parameterType="com.example.mbboard.dto.Member">
+	<update id="updateMemberRole"
+		parameterType="com.example.mbboard.dto.Member">
 		UPDATE member
 		SET member_role = #{memberRole}
-		WHERE member_id = #{memberId}
+		WHERE
+		member_id = #{memberId}
 	</update>
 
 </mapper>
