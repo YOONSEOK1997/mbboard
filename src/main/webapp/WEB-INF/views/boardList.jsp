@@ -122,6 +122,7 @@
     </style>
 </head>
 <body>
+<%@ include file="/WEB-INF/views/header.jsp" %>
 
 <div class="board-list-container">
     <h1>📋 게시판 목록</h1>

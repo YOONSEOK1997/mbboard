@@ -24,15 +24,15 @@ public class BoardController {
     }
 
    // 게시글 목록
-    @GetMapping({"/", "/boardList"})
+    @GetMapping("/boardList")
     public String boardList(@ModelAttribute Page page, Model model) {
       
         int totalCount = boardService.getBoardCount(page);
         page.setTotalCount(totalCount);
 
-        List<Board> boardList = boardService.getBoardListByPage(page);
-
-   
+		 List<Board> boardList = boardService.getBoardListByPage(page);
+    
+        
         model.addAttribute("boardList", boardList);
         model.addAttribute("page", page);
 

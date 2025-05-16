@@ -81,6 +81,9 @@
     <form action="${pageContext.request.contextPath}/boardWrite" method="post">
         <label for="boardTitle">제목</label>
         <input type="text" id="boardTitle" name="boardTitle" required>
+        
+       
+        
 
         <label for="boardContent">내용</label>
         <textarea id="boardContent" name="boardContent" rows="10" required></textarea>

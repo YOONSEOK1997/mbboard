@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mbboard.mapper.ConnectCountMapper">
+
+	<!-- 로그인 시 접속 날짜 확인 -->
+	<select id="selectConnectDateByKey" parameterType="com.example.mbboard.dto.ConnectCount">
+		SELECT connect_date 
+		FROM connect_count
+		WHERE connect_date = CURDATE()
+		AND member_role = #{memberRole}
+	</select>
+
+	<!-- 접속 기록 추가 -->
+	<insert id="insertConnectCount" parameterType="com.example.mbboard.dto.ConnectCount">
+		INSERT INTO connect_count (
+			connect_date, member_role, count
+		) VALUES (
+			CURDATE(), #{memberRole}, 1
+		)
+	</insert>
+
+	<!-- 접속 기록 수정 (count 증가) -->
+	<update id="updateConnectCount" parameterType="com.example.mbboard.dto.ConnectCount">
+		UPDATE connect_count
+		SET count = count + 1
+		WHERE connect_date = CURDATE()
+		AND member_role = #{memberRole}
+	</update>
+
+	<!-- 전체 접속 카운트 (누적) -->
+	<select id="selectConnectCountAll" resultType="map">
+		SELECT 
+			SUM(CASE WHEN member_role = 'anonymous' THEN `count` ELSE 0 END) AS anonymous,
+			SUM(CASE WHEN member_role = 'user' THEN `count` ELSE 0 END) AS user,
+			SUM(CASE WHEN member_role = 'admin' THEN `count` ELSE 0 END) AS admin
+		FROM connect_count
+	</select>
+
+	<!-- 오늘 날짜 기준 접속 카운트 -->
+	<select id="selectConnectCountToday" resultType="map">
+		SELECT 
+			SUM(CASE WHEN member_role = 'anonymous' THEN `count` ELSE 0 END) AS anonymous,
+			SUM(CASE WHEN member_role = 'user' THEN `count` ELSE 0 END) AS member,
+			SUM(CASE WHEN member_role = 'admin' THEN `count` ELSE 0 END) AS admin
+		FROM connect_count
+		WHERE connect_date = CURDATE()
+	</select>
+
+</mapper>
