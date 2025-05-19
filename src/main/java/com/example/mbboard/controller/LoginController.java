@@ -35,7 +35,7 @@ public class LoginController {
 	
 	
 	@GetMapping("/findMemberPw")
-	public String findMemberPw() {
+	public String findMemberPwForm() {
 		return "/findMemberPw";
 	}
 	@PostMapping("/findMemberPw")
@@ -44,8 +44,22 @@ public class LoginController {
 		loginService.changeMemberPwByAdmin(member);
 		
 		//비밀번호 변경 페이지로 이동
-		return "redirect:/login";
+		return "redirect:/reChangeMemberPw";
 	}
+	@GetMapping("/reChangeMemberPw")
+	public String reChangeMemberPwForm() {
+		return "/reChangeMemberPw";
+	}
+	@PostMapping("/reChangeMemberPw")
+		public String reChangeMemberPw(Member member){
+		loginService.reChangeMemberPw(member);
+			return "redirect:/login";
+		}
+		//비밀번호 변경
+		
+		//
+		
+	
 	@GetMapping("/logout")
 	public String logout(HttpSession session) {
 		session.invalidate();

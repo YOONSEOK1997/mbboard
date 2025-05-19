@@ -61,7 +61,7 @@ public class LoginService implements ILoginService {
 	public int updateMemberRole(Member member) {
 		return loginMapper.updateMemberRole(member);
 	}
-	//비밀번호 찾기( 변경)
+	//비밀번호 찾기( 관리자에 의한 변경)
 	@Override
 	public void changeMemberPwByAdmin(Member member) {
 		String randomwPw = UUID.randomUUID().toString().replace("-", "").substring(0,8);
@@ -70,12 +70,17 @@ public class LoginService implements ILoginService {
 		SimpleMailMessage msg = new SimpleMailMessage();
 		msg.setFrom("admin@localhost.com");
 		msg.setTo(member.getEmail());
-		msg.setSubject("변경된 비밀번호입니다" + member.getMemberPw());
-		msg.setText("10분안에 로그인하여 수정하셔야 합니다");
+		msg.setSubject("비밀번호 변경을 위한 인증번호입니다" );
+		msg.setText( "인증번호는 "+member.getMemberPw() + "입니다 " 
+				+ "10분안에 로그인하여 수정하셔야 합니다");
 	
 		javaMailSender.send(msg);
 	}
-
+	//비밀번호 찾기 ( 메일로 전송받은 후 변경)
+	@Override
+	public void reChangeMemberPw(Member member) {
+		loginMapper.reChangeMemberPw(member);
+	}
 }
 
 

@@ -10,4 +10,5 @@ public class Member {
 	private String saveIdCk;
 	private String email;
 	private String pwcktime;
+	private String reMemberPw;
 }

@@ -12,4 +12,5 @@ public interface ILoginService {
 	List<Member> getMemberList(Member member); //멤버리스트 출력
 	int updateMemberRole(Member member);
 	void changeMemberPwByAdmin(Member member);
+	void reChangeMemberPw(Member member);
 }

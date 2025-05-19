@@ -11,14 +11,14 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-	<h1>rechangeMemberP</h1>
-	<form>
+	<h1>인증번호가 메일로 전송되었습니다.</h1>
+	<form method="post" action="/reChangeMemberPw">
 		<div>
 		 <input type="text" name="memberId" placeholder="memberId">	
 	</div>
 	
 	<div>
-	 <input type="password" name="memberPw" placeholder="메일로 받은 PW">
+	 <input type="password" name="memberPw" placeholder="메일로 받은 인증번호">
 	</div>
 	<div>
  	<input type="password" name="reMemberPw" placeholder="변경할 Pw">

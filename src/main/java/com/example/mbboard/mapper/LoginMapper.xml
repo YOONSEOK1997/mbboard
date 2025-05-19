@@ -66,8 +66,16 @@
 	    UPDATE member
 	    SET member_pw = #{memberPw}
 	    WHERE member_id = #{memberId}
-	    AND pwckTime IS NOT NULL
-	    AND TIMESTAMPDIFF(MINUTE, pwckTime, NOW()) &lt; 10
+	  <!--   AND pwckTime IS NOT NULL -->
+	 <!--    AND TIMESTAMPDIFF(MINUTE, pwckTime, NOW()) &lt; 10 -->
+	</update>
+	<update id="reChangeMemberPw"
+		parameterType="com.example.mbboard.dto.Member">
+		UPDATE member
+		SET member_pw = #{reMemberPw}
+		WHERE member_id = #{memberId} 
+	    AND member_pw  = #{memberPw}
+	    
 	</update>
 
 </mapper>

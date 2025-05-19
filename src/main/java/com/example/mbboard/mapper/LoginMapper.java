@@ -22,4 +22,6 @@ public interface LoginMapper {
 	int updateMemberRole(Member member);
 
 	void changeMemberPwByAdmin(Member member);
+	
+	void reChangeMemberPw(Member member);
 }
