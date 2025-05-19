@@ -20,4 +20,6 @@ public interface LoginMapper {
 	int updateMember(Member member);
 
 	int updateMemberRole(Member member);
+
+	void changeMemberPwByAdmin(Member member);
 }

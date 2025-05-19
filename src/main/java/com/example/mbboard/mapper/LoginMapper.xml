@@ -60,5 +60,14 @@
 		WHERE
 		member_id = #{memberId}
 	</update>
+	<!-- 관리자에 의한 비밀번호 변경 (비밀번호 찾기 -->
+	<update id="changeMemberPwByAdmin"
+	    parameterType="com.example.mbboard.dto.Member">
+	    UPDATE member
+	    SET member_pw = #{memberPw}
+	    WHERE member_id = #{memberId}
+	    AND pwckTime IS NOT NULL
+	    AND TIMESTAMPDIFF(MINUTE, pwckTime, NOW()) &lt; 10
+	</update>
 
 </mapper>
