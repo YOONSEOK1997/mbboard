@@ -70,8 +70,8 @@ public class LoginService implements ILoginService {
 		SimpleMailMessage msg = new SimpleMailMessage();
 		msg.setFrom("admin@localhost.com");
 		msg.setTo(member.getEmail());
-		msg.setSubject("비밀번호 변경을 위한 인증번호입니다" );
-		msg.setText( "인증번호는 "+member.getMemberPw() + "입니다 " 
+		msg.setSubject("임시 비밀번호입니다" );
+		msg.setText( "임시비밀번호는 "+member.getMemberPw() + "입니다 " 
 				+ "10분안에 로그인하여 수정하셔야 합니다");
 	
 		javaMailSender.send(msg);

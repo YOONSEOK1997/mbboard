@@ -11,7 +11,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-	<h1>인증번호가 메일로 전송되었습니다.</h1>
+	<h1>임시 비밀번호가 메일로 전송되었습니다.</h1>
 	<form method="post" action="/reChangeMemberPw">
 		<div>
 		 <input type="text" name="memberId" placeholder="memberId">	
